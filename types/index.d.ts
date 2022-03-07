@@ -1,0 +1,58 @@
+declare interface Fn<T = any, R = T> {
+    (...arg: T[]): R;
+}
+
+declare interface PromiseFn<T = any, R = T> {
+    (...arg: T[]): Promise<R>;
+}
+declare interface ServerConfigs {
+    Version?: string;
+    Title?: string;
+    FixedHeader?: boolean;
+    HiddenSideBar?: boolean;
+    MultiTagsCache?: boolean;
+    KeepAlive?: boolean;
+    Locale?: string;
+    Layout?: string;
+    Theme?: string;
+    DarkMode?: boolean;
+    Grey?: boolean;
+    Weak?: boolean;
+    HideTabs?: boolean;
+    SidebarStatus?: boolean;
+    EpThemeColor?: string;
+    ShowLogo?: boolean;
+    ShowModel?: string;
+    MapConfigure?: {
+        amapKey?: string;
+        options: {
+            resizeEnable?: boolean;
+            center?: number[];
+            zoom?: number;
+        };
+    };
+}
+declare type RefType<T> = T | null;
+
+declare type LabelValueOptions = {
+    label: string;
+    value: any;
+}[];
+
+declare type EmitType = (event: string, ...args: any[]) => void;
+
+declare type TargetContext = '_self' | '_blank';
+
+declare interface ComponentElRef<T extends HTMLElement = HTMLDivElement> {
+    $el: T;
+}
+
+declare type ComponentRef<T extends HTMLElement = HTMLDivElement> = ComponentElRef<T> | null;
+
+declare type ElRef<T extends HTMLElement = HTMLDivElement> = Nullable<T>;
+
+declare type ForDataType<T> = {
+    [P in T]?: ForDataType<T[P]>;
+};
+
+declare type AnyFunction<T> = (...args: any[]) => T;

@@ -1,5 +1,8 @@
 module.exports = {
-    'src/**/*{js,jsx,ts,tsx,md,html}': ['lint:eslint']
-    // 'src/**/*.less': ['npm run lint:style', 'git add'],
-    // '*': ['pretty-quick --staged']
+    '*.{js,jsx,ts,tsx}': ['eslint --fix', 'prettier --write'],
+    '{!(package)*.json,.!(browserslist)*rc}': ['prettier --write--parser json'],
+    'package.json': ['prettier --write'],
+    '*.vue': ['eslint --fix', 'prettier --write', 'stylelint --fix'],
+    '*.{vue,css,scss,postcss,less}': ['stylelint --fix', 'prettier --write'],
+    '*.md': ['prettier --write']
 };

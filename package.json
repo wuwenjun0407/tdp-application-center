@@ -13,6 +13,7 @@
         "lint:eslint": "eslint --cache --max-warnings 0  \"src/**/*/*.{vue,ts,tsx}\" --fix",
         "lint:stylelint": "stylelint --cache --fix \"**/*.{vue,css,scss,postcss,less}\" --cache --cache-location node_modules/.cache/stylelint/",
         "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
+        "lint:pretty": "pretty-quick --staged",
         "preinstall": "npx only-allow pnpm",
         "prepare": "husky install"
     },

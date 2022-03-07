@@ -1,1 +1,5 @@
-# /src/assets/iconfont/*
+public
+dist
+*.d.ts
+package.json
+/src/assets/*

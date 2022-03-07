@@ -33,10 +33,12 @@ const count = ref(0);
 
 <style scoped lang="scss">
 a {
+    position: absolute;
+    color: #42b983;
+
     &:hover {
         color: red;
     }
-    color: #42b983;
 }
 
 label {
@@ -45,9 +47,9 @@ label {
 }
 
 code {
-    background-color: #eee;
     padding: 2px 4px;
     border-radius: 4px;
     color: #304455;
+    background-color: #eee;
 }
 </style>

@@ -1,11 +1,12 @@
 import { toRouteType } from './types';
 import { routes, remainingPaths } from './modules';
 import NProgress from '/@/utils/progress';
-import { Router, createRouter, createWebHashHistory } from 'vue-router';
+import { Router, createRouter } from 'vue-router';
+import { getHistoryMode } from './utils';
 
 // 创建路由实例
 export const router: Router = createRouter({
-    history: createWebHashHistory(''),
+    history: getHistoryMode(),
     routes: routes.concat(...remainingPaths),
     strict: true,
     scrollBehavior(to, from, savedPosition) {

@@ -6,8 +6,12 @@ import { injectResponsiveStorage } from '/@/utils/storage/responsive';
 import { usI18n } from './i18n/index';
 import { setupStore } from '/@/store';
 import { useElementPlus } from '../src/plugins/element-plus';
+import componentRegister from './components/componentRegister';
+import 'virtual:svg-icons-register';
 
 const app = createApp(App);
+
+componentRegister(app);
 
 // 自定义指令
 import * as directives from '/@/directives';

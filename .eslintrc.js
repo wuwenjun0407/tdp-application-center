@@ -50,7 +50,7 @@ module.exports = {
         'vue/multi-word-component-names': 'off',
         '@typescript-eslint/no-explicit-any': 'off', // any
         'no-debugger': 'warn',
-        'no-console': 'warn',
+        'no-console': 'off',
         '@typescript-eslint/ban-types': 'off',
         '@typescript-eslint/ban-ts-comment': 'off',
         '@typescript-eslint/no-empty-function': 'off',

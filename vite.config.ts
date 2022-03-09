@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { warpperEnv, regExps } from './build';
 import { UserConfigExport, ConfigEnv, loadEnv } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import { getPluginsList } from './build/plugins';
 
 // 当前执行node命令时文件夹的地址（工作目录）
 const root: string = process.cwd();
@@ -17,8 +17,8 @@ const alias: Record<string, string> = {
     '@build': pathResolve('build')
 };
 
-export default ({ mode }: ConfigEnv): UserConfigExport => {
-    const { VITE_PORT, VITE_PUBLIC_PATH, VITE_PROXY_DOMAIN, VITE_PROXY_DOMAIN_REAL } = warpperEnv(loadEnv(mode, root));
+export default ({ command, mode }: ConfigEnv): UserConfigExport => {
+    const { VITE_PORT, VITE_LEGACY, VITE_PUBLIC_PATH, VITE_PROXY_DOMAIN, VITE_PROXY_DOMAIN_REAL } = warpperEnv(loadEnv(mode, root));
     const __DEV__ = mode === 'development';
     if (__DEV__) {
         // 解决警告You are running the esm-bundler build of vue-i18n.
@@ -67,7 +67,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
                       }
                     : null
         },
-        plugins: [vue()],
+        plugins: getPluginsList(command, mode, root, VITE_LEGACY),
         optimizeDeps: {
             include: ['pinia', 'vue-i18n', 'lodash-es', 'element-plus/lib/locale/lang/en', 'element-plus/lib/locale/lang/zh-cn'],
             exclude: ['@zougt/vite-plugin-theme-preprocessor/dist/browser-utils']

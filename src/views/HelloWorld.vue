@@ -1,8 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+// import { mapJson } from '/@/api/mock';
 // import { ref, getCurrentInstance } from 'vue';
 
 const count = ref(0);
+// mapJson()
+//     .then((res: any) => {
+//         console.log(res, 'asa');
+//     })
+//     .catch((err) => {
+//         console.log('err:', err);
+//     });
 // const instance = getCurrentInstance();
 // const { Title } = instance.appContext.config.globalProperties.$config;
 // console.log(Title, 'asasa');
@@ -10,7 +18,14 @@ const count = ref(0);
 
 <template>
     <h1>{{ $t('home') }}</h1>
-
+    <el-button>Default</el-button>
+    <el-button type="primary">Primary</el-button>
+    <el-button type="success">Success</el-button>
+    <el-button type="info">Info</el-button>
+    <el-button type="warning">Warning</el-button>
+    <el-button type="danger">Danger</el-button>
+    <el-button>中文</el-button>
+    <IconSvg iconClass="user" hover="user-s"></IconSvg>
     <p>
         Recommended IDE setup:
         <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
@@ -18,7 +33,7 @@ const count = ref(0);
         <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
     </p>
 
-    <p>See <code>README.md</code> for more information.</p>
+    <p>See1 <code>README.md</code> for more information.</p>
 
     <p>
         <a href="https://vitejs.dev/guide/features.html" target="_blank"> Vite Docs </a>

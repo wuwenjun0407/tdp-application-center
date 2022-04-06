@@ -1,9 +1,57 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-// import { mapJson } from '/@/api/mock';
-// import { ref, getCurrentInstance } from 'vue';
+import { ref, reactive, watch, nextTick, computed, InjectionKey, onMounted, unref, toRef, provide } from 'vue';
+import { storeToRefs } from 'pinia';
+// import { login } from '/@/api/user';
+import Child from '/@/views/Child.vue';
+import { useSettingStore } from '/@/store/modules/settings';
 
+const Store = useSettingStore();
+const { title } = storeToRefs(Store);
+Store.$patch((state) => {
+    state.title = 'new title';
+});
+type setUser = (name: string, age: number) => void;
+
+let user: setUser = function (name, age) {
+    console.log(name, age);
+};
+user('1', 2);
+await nextTick();
 const count = ref(0);
+const count1 = 1;
+const key: InjectionKey<number> = Symbol();
+provide(key, unref(count));
+console.log(unref(count1));
+const obj = reactive({ count });
+const as = toRef(obj, 'count');
+console.log(as.value, 'asasasa');
+as.value++;
+console.log(as.value, 'asasasa', obj.count);
+const repositories = ref<Array<number>>([]);
+const newTitle = computed(() => {
+    return repositories.value;
+});
+// console.log(obj.count, '1212');
+repositories.value = [1, 2, 3];
+watch(count, (newVal: number, oldVal: number) => {
+    console.log(newVal, oldVal);
+});
+
+function getName() {
+    repositories.value.push(4);
+    Store.CHANGE_TITLE('232323');
+    // console.log(count.value++);
+}
+
+const child = ref(null);
+onMounted(() => {
+    setTimeout(() => {
+        console.log(child.value.original.count, 'btn');
+    });
+});
+// onMounted(getName);
+// const DIV: Element = document.getElementsByClassName('interface')[0];
+// type a = typeof DIV;
 // mapJson()
 //     .then((res: any) => {
 //         console.log(res, 'asa');
@@ -14,11 +62,15 @@ const count = ref(0);
 // const instance = getCurrentInstance();
 // const { Title } = instance.appContext.config.globalProperties.$config;
 // console.log(Title, 'asasa');
+// login();
 </script>
 
 <template>
-    <h1>{{ $t('home') }}</h1>
-    <el-button>Default</el-button>
+    {{ newTitle }}
+    {{ title }}
+    <Child ref="child" :data="repositories"></Child>
+    <h1 @click="getName" class="home">{{ $t('home') }}</h1>
+    <el-button style="font-size: 14px">Default</el-button>
     <el-button type="primary">Primary</el-button>
     <el-button type="success">Success</el-button>
     <el-button type="info">Info</el-button>
@@ -26,6 +78,9 @@ const count = ref(0);
     <el-button type="danger">Danger</el-button>
     <el-button>中文</el-button>
     <IconSvg iconClass="user" hover="user-s"></IconSvg>
+    <ul>
+        <li v-for="(item, index) in repositories" :key="index">{{ item }}</li>
+    </ul>
     <p>
         Recommended IDE setup:
         <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>

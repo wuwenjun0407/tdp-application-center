@@ -63,6 +63,13 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
                               // ws: true,
                               changeOrigin: true,
                               rewrite: (path: string) => regExps(path, VITE_PROXY_DOMAIN)
+                          },
+                          '/login': {
+                              target: 'https://bct-oidc-dev.t-sy-in.earth.xcloud.lenovo.com',
+                              // ws: true,
+                              changeOrigin: true,
+                              rewrite: (path) => path.replace(/^\/login/, '')
+                              //   rewrite: (path: string) => regExps(path, VITE_PROXY_DOMAIN)
                           }
                       }
                     : null

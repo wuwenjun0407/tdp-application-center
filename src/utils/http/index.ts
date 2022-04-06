@@ -1,14 +1,14 @@
 import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { loadEnv } from '@build/index';
+// import { loadEnv } from '@build/index';
 import { TdpHttpError, RequestMethods, TdpHttpResoponse, TdpHttpRequestConfig } from './types.d';
 import NProgress from '../progress';
 
 // 加载环境变量 VITE_PROXY_DOMAIN（开发环境）  VITE_PROXY_DOMAIN_REAL（打包后的线上环境）
-const { VITE_PROXY_DOMAIN, VITE_PROXY_DOMAIN_REAL } = loadEnv();
+// const { VITE_PROXY_DOMAIN, VITE_PROXY_DOMAIN_REAL } = loadEnv();
 
 // 相关配置请参考：www.axios-js.com/zh-cn/docs/#axios-request-config-1
 const defaultConfig: AxiosRequestConfig = {
-    baseURL: process.env.NODE_ENV === 'production' ? VITE_PROXY_DOMAIN_REAL : VITE_PROXY_DOMAIN,
+    // baseURL: process.env.NODE_ENV === 'production' ? VITE_PROXY_DOMAIN_REAL : VITE_PROXY_DOMAIN,
     timeout: 10000,
     headers: {
         Accept: 'application/json, text/plain, */*',

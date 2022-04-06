@@ -8,7 +8,7 @@ const props = defineProps({
     },
     className: {
         type: String,
-        default: ''
+        default: 'cursor'
     },
     size: {
         type: String,

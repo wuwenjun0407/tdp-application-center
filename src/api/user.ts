@@ -21,6 +21,11 @@ export const refreshToken = (data: object) => {
     return http.request('post', '/refreshToken', { data });
 };
 
+// 刷新token
+export const login = () => {
+    return http.request('get', '/login/saml/login?appCode=abc111&url=https://stscn.lenovo.com/adfs/ls/IdpInitiatedSignOn.aspx?loginToRp=bct&accountSource=ADFS');
+};
+
 // export const searchVague = (data: object) => {
 //   return http.request("post", "/searchVague", { data });
 // };

@@ -1,7 +1,7 @@
 import vue from '@vitejs/plugin-vue';
 import { loadEnv } from 'vite';
 import { viteBuildInfo } from './info';
-import { viteBuildVision } from './version';
+import viteVisionPlugin from 'tdp-vue3-version-plugin';
 import { warpperEnv } from '../build';
 import legacy from '@vitejs/plugin-legacy';
 import vueJsx from '@vitejs/plugin-vue-jsx';
@@ -25,7 +25,7 @@ export function getPluginsList(command, mode, root, VITE_LEGACY) {
         // 终端输出
         viteBuildInfo(),
         // 生成版本文件
-        viteBuildVision({
+        viteVisionPlugin({
             env: process.env,
             versionDirectory: '/public',
             fileName: 'version.json',

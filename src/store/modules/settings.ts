@@ -28,8 +28,13 @@ export const useSettingStore = defineStore({
                 this[key] = value;
             }
         },
+
         changeSetting(data) {
             this.CHANGE_SETTING(data);
+        },
+
+        CHANGE_TITLE(value: string) {
+            this.title = value;
         }
     }
 });

@@ -1,14 +1,20 @@
 <script setup lang="ts">
 import { ref, reactive, watch, nextTick, computed, InjectionKey, onMounted, unref, toRef, provide } from 'vue';
-import { storeToRefs } from 'pinia';
+// import { storeToRefs } from 'pinia';
 // import { login } from '/@/api/user';
 import Child from '/@/views/Child.vue';
 import { useSettingStore } from '/@/store/modules/settings';
 
 const Store = useSettingStore();
-const { title } = storeToRefs(Store);
-Store.$patch((state) => {
-    state.title = 'new title';
+// const { title } = storeToRefs(Store);
+nextTick(() => {
+    Store.$patch((state) => {
+        console.log('9090');
+        state.title = 'new title';
+    });
+});
+Store.$subscribe((mutation, state) => {
+    console.log(mutation, state, '12121', state.title);
 });
 type setUser = (name: string, age: number) => void;
 
@@ -31,7 +37,7 @@ const repositories = ref<Array<number>>([]);
 const newTitle = computed(() => {
     return repositories.value;
 });
-// console.log(obj.count, '1212');
+console.log(obj.count, '1212', newTitle.value);
 repositories.value = [1, 2, 3];
 watch(count, (newVal: number, oldVal: number) => {
     console.log(newVal, oldVal);
@@ -49,7 +55,7 @@ onMounted(() => {
         console.log(child.value.original.count, 'btn');
     });
 });
-// onMounted(getName);
+onMounted(getName);
 // const DIV: Element = document.getElementsByClassName('interface')[0];
 // type a = typeof DIV;
 // mapJson()
@@ -66,10 +72,10 @@ onMounted(() => {
 </script>
 
 <template>
-    {{ newTitle }}
-    {{ title }}
+    <!-- {{ newTitle }}
+    {{ title }} -->
     <Child ref="child" :data="repositories"></Child>
-    <h1 @click="getName" class="home">{{ $t('home') }}</h1>
+    <!-- <h1 @click="getName" class="home">{{ $t('home') }}</h1> -->
     <el-button style="font-size: 14px">Default</el-button>
     <el-button type="primary">Primary</el-button>
     <el-button type="success">Success</el-button>

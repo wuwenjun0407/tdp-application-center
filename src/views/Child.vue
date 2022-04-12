@@ -16,7 +16,7 @@
  * @Author: wuwj8
  * @Date: 2022-03-10 15:59:53
  * @LastEditors: your name
- * @LastEditTime: 2022-04-06 14:26:13
+ * @LastEditTime: 2022-04-12 10:55:47
  * @FilePath: \tdp-application-center\src\views\Child.vue
  * @Description:
  -->
@@ -32,7 +32,7 @@ const original = reactive({ count: 0 });
 const a = ref(1);
 console.log(isReactive(original));
 const key = inject('key');
-// console.log(key, 'key');
+console.log(key, 'key');
 let b = readonly(original);
 console.log(b, a.value, key);
 // b.count++;
@@ -49,9 +49,16 @@ onMounted(() => {});
 defineExpose({
     original
 });
+function childClick() {
+    Store.$patch((state) => {
+        state.title = 'new title';
+    });
+    Store.$patch({ title: '111' });
+}
 </script>
 
 <template>
+    <h2 @click="childClick">Child</h2>
     {{ title }}
     <div v-for="(item, index) in props.data" :key="index">{{ item }}</div>
 </template>

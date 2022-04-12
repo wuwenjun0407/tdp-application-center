@@ -69,7 +69,7 @@ module.exports = {
         'dot-location': [2, 'property'], // 对象访问符的位置，换行的时候在行首还是行尾
         'no-lone-blocks': 2, // 禁止不必要的嵌套块
         'no-labels': 2, // 禁止标签声明
-        'no-extend-native': 2, // 禁止扩展native对象
+        'no-extend-native': 0, // 禁止扩展native对象
         'no-floating-decimal': 2, // 禁止省略浮点数中的0 .5 3.
         'no-loop-func': 2, // 禁止在循环中使用函数（如果没有引用外部变量不形成闭包就可以）
         'no-new-func': 2, // 禁止使用new Function
@@ -96,6 +96,7 @@ module.exports = {
         'array-bracket-spacing': [2, 'never'], // 禁止或在方括号内加空格（array-bracket-spacing）
         'no-duplicate-imports': 1, // 禁止重复导入（无重复导入）
         '@typescript-eslint/interface-name-prefix': 0, // interface 命名规则修改
+        '@typescript-eslint/no-this-alias': 0,
         camelcase: 1, // 强制驼峰法命名
         quotes: [1, 'single'], // 引号风格
         semi: [0, 'always'], // 强制语句分号结尾

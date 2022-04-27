@@ -1,61 +1,62 @@
 <script setup lang="ts">
-import { ref, reactive, watch, nextTick, computed, InjectionKey, onMounted, unref, toRef, provide } from 'vue';
+import { ref } from 'vue';
+// import { ref, reactive, watch, nextTick, computed, InjectionKey, onMounted, unref, toRef, provide } from 'vue';
 // import { storeToRefs } from 'pinia';
 // import { login } from '/@/api/user';
 import Child from '/@/views/Child.vue';
-import { useSettingStore } from '/@/store/modules/settings';
+// import { useSettingStore } from '/@/store/modules/settings';
 
-const Store = useSettingStore();
+// const Store = useSettingStore();
 // const { title } = storeToRefs(Store);
-nextTick(() => {
-    Store.$patch((state) => {
-        console.log('9090');
-        state.title = 'new title';
-    });
-});
-Store.$subscribe((mutation, state) => {
-    console.log(mutation, state, '12121', state.title);
-});
-type setUser = (name: string, age: number) => void;
+// nextTick(() => {
+//     Store.$patch((state) => {
+//         console.log('9090');
+//         state.title = 'new title';
+//     });
+// });
+// Store.$subscribe((mutation, state) => {
+//     console.log(mutation, state, '12121', state.title);
+// });
+// type setUser = (name: string, age: number) => void;
 
-let user: setUser = function (name, age) {
-    console.log(name, age);
-};
-user('1', 2);
-await nextTick();
+// let user: setUser = function (name, age) {
+//     console.log(name, age);
+// };
+// user('1', 2);
+// await nextTick();
 const count = ref(0);
-const count1 = 1;
-const key: InjectionKey<number> = Symbol();
-provide(key, unref(count));
-console.log(unref(count1));
-const obj = reactive({ count });
-const as = toRef(obj, 'count');
-console.log(as.value, 'asasasa');
-as.value++;
-console.log(as.value, 'asasasa', obj.count);
+// const count1 = 1;
+// const key: InjectionKey<number> = Symbol();
+// provide(key, unref(count));
+// console.log(unref(count1));
+// const obj = reactive({ count });
+// const as = toRef(obj, 'count');
+// console.log(as.value, 'asasasa');
+// as.value++;
+// console.log(as.value, 'asasasa', obj.count);
 const repositories = ref<Array<number>>([]);
-const newTitle = computed(() => {
-    return repositories.value;
-});
-console.log(obj.count, '1212', newTitle.value);
+// const newTitle = computed(() => {
+//     return repositories.value;
+// });
+// console.log(obj.count, '1212', newTitle.value);
 repositories.value = [1, 2, 3];
-watch(count, (newVal: number, oldVal: number) => {
-    console.log(newVal, oldVal);
-});
+// watch(count, (newVal: number, oldVal: number) => {
+//     console.log(newVal, oldVal);
+// });
 
-function getName() {
-    repositories.value.push(4);
-    Store.CHANGE_TITLE('232323');
-    // console.log(count.value++);
-}
+// function getName() {
+//     repositories.value.push(4);
+//     Store.CHANGE_TITLE('232323');
+//     // console.log(count.value++);
+// }
 
-const child = ref(null);
-onMounted(() => {
-    setTimeout(() => {
-        console.log(child.value.original.count, 'btn');
-    });
-});
-onMounted(getName);
+// const child = ref(null);
+// onMounted(() => {
+//     setTimeout(() => {
+//         console.log(child.value.original.count, 'btn');
+//     });
+// });
+// onMounted(getName);
 // const DIV: Element = document.getElementsByClassName('interface')[0];
 // type a = typeof DIV;
 // mapJson()

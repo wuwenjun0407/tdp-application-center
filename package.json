@@ -10,7 +10,7 @@
         "build:prod": "rimraf dist &&  vite build --mode production",
         "build:uat": "rimraf dist &&  vite build --mode uat",
         "build:visualizer": "rimraf dist &&  vite build",
-        "preview": "vite preview --mode development",
+        "preview": "vite preview",
         "preview:build": "pnpm build && vite preview",
         "clean:cache": "rimraf node_modules && rimraf .eslintcache && pnpm install",
         "lint": "pnpm lint:eslint && pnpm lint:stylelint & pnpm lint:prettier",
@@ -23,6 +23,8 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "@sentry/tracing": "^6.19.6",
+        "@sentry/vue": "^6.19.6",
         "@types/node": "^17.0.21",
         "axios": "^0.26.0",
         "dayjs": "^1.10.8",

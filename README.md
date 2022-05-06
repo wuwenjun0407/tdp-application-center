@@ -28,7 +28,7 @@ git clone http://gitlab.xpaas.lenovo.com/tdp/bct/bct-web.git
 -   安装依赖
 
 ```
-cd tdp-application-center
+cd tdp-application-template
 
 pnpm install
 

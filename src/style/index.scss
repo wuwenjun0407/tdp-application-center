@@ -1,4 +1,93 @@
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-plus.scss';
+@import './dark.scss';
+
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+    text-rendering: optimizelegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+html {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+}
+
 label {
-    position: absolute;
-    margin-top: 0;
+    font-weight: 700;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+div:focus {
+    outline: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.clearfix {
+    &::after {
+        clear: both;
+        display: block;
+        height: 0;
+        visibility: hidden;
+        font-size: 0;
+        content: ' ';
+    }
+}
+
+/* 头部用户信息样式重置 */
+.hidden {
+    display: none !important;
+}
+
+/* 灰色模式 */
+.html-grey {
+    filter: grayscale(100%);
+}
+
+/* 色弱模式 */
+.html-weakness {
+    filter: invert(80%);
+}
+
+.pc-spacing {
+    margin: 10px;
+}
+
+.mobile-spacing {
+    margin: 0;
 }

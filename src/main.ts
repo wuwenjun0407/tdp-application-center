@@ -10,8 +10,12 @@ import { useElementPlus } from '../src/plugins/element-plus';
 import componentRegister from './components/componentRegister';
 import 'virtual:svg-icons-register';
 
+// 导入公共样式
+import './style/index.scss';
+
 const app = createApp(App);
 
+// 全局注册组件到vue
 componentRegister(app);
 
 // 自定义指令

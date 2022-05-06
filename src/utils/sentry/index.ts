@@ -7,7 +7,6 @@ import { BrowserTracing } from '@sentry/tracing';
 const { VITE_IS_SENTRY, VITE_SENTRY_DNS } = loadEnv();
 
 export const initSentry = (app: App) => {
-    console.log(VITE_IS_SENTRY, 'VITE_IS_SENTRY');
     if (VITE_IS_SENTRY) {
         Sentry.init({
             app,

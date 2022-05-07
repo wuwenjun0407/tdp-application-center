@@ -19,7 +19,7 @@
 -   获取项目代码
 
 ```
-git clone http://gitlab.xpaas.lenovo.com/tdp/bct/bct-web.git
+git clone https://github.com/wuwenjun0407/tdp-application-center.git
 
 ```
 
